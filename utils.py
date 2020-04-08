@@ -11,7 +11,7 @@ class conv_block(object):
         self.kernelSize = kernelSize
         self.strides = strides
     def __call__(self, x, training = None):
-        x = Conv2D(self.filters, self.kernelSize, kernel_initializer = init, strides = self.strides, padding = 'same')(x)
+        x = Conv2D(self.filters, self.kernelSize, strides = self.strides, padding = 'same')(x)
         x = BatchNormalization()(x)
         x = LeakyReLU()(x)
         return x
