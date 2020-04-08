@@ -59,7 +59,7 @@ class vgg_encoder(Architecture):
         logvar = Conv2D(filters = self.latentSize, kernel_size = (1, 1),
                         padding = 'same')(x)
         logvar = GlobalAveragePooling2D()(logvar)
-        sample = layers(self.latentConstraints, self.beta)([mean, logvar], training = self.training)
+        sample = latent_vector(self.latentConstraints, self.beta)([mean, logvar], training = self.training)
         return Model(inputs = inLayer, outputs = sample)
 
 class vgg_decoder(Architecture):
