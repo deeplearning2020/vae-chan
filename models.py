@@ -5,7 +5,7 @@ from tensorflow.python.keras.layers import (InputLayer, Conv2D, Conv2DTranspose,
             Reshape, GlobalAveragePooling2D, GaussianNoise)
 from tensorflow.python.keras.models import Model
 from utils import conv_block
-from layers import SampleLayer
+from layers import latent_vector
 
 
 class vgg_encoder(Architecture):

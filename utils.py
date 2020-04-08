@@ -6,14 +6,14 @@ from tensorflow.python.keras import backend as K
 from tensorflow.python.keras.layers import InputSpec
 
 class conv_block(object):
-    def __init__(self, filters, kernelSize, strides=1):
+    def __init__(self, filters, kernelSize, strides = 1):
         self.filters = filters
         self.kernelSize = kernelSize
         self.strides = strides
-    def __call__(self, net, training=None):
-        net = Conv2D(self.filters, self.kernelSize,kernel_initializer = init,strides=self.strides, padding='same')(net)
-        net = BatchNormalization()(net)
-        net = LeakyReLU()(net)
-        return net
+    def __call__(self, x, training = None):
+        x = Conv2D(self.filters, self.kernelSize, kernel_initializer = init, strides = self.strides, padding = 'same')(x)
+        x = BatchNormalization()(x)
+        x = LeakyReLU()(x)
+        return x
 
 
