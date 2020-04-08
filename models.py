@@ -8,9 +8,9 @@ from utils import conv_block
 from layers import latent_vector
 
 
-class vgg_encoder(Architecture):
-    def __init__(self, inputShape=(256, 256, 3), batchSize = None,
-                 latentSize=1000, latentConstraints = 'bvae', beta = 100., training = None):
+class vgg_encoder(variational_autoencoder):
+    def __init__(self, inputShape = (256, 256, 3), batchSize = None,
+                 latentSize = 1000, latentConstraints = 'bvae', beta = 100., training = None):
         self.latentConstraints = latentConstraints
         self.beta = beta
         self.training = training
