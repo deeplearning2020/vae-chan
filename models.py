@@ -13,7 +13,7 @@ class Architecture(object):
         self.inputShape = inputShape
         self.batchSize = batchSize
         self.latentSize = latentSize
-        self.model = self.Build()
+        self.model = self.build()
 
 class vgg_encoder(Architecture):
     def __init__(self, inputShape = (256, 256, 3), batchSize = None,
@@ -23,7 +23,7 @@ class vgg_encoder(Architecture):
         self.training = training
         super().__init__(inputShape, batchSize, latentSize)
 
-    def Build(self):
+    def build(self):
         inLayer = Input(self.inputShape, self.batchSize)
         x = conv_block(32, kernelSize = 3)(inLayer, training = self.training)
         x = MaxPool2D((2, 2), strides = (2, 2))(x)
