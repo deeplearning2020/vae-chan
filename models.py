@@ -7,8 +7,15 @@ from tensorflow.python.keras.models import Model
 from utils import conv_block
 from layers import latent_vector
 
+class Architecture(object):
+    def __init__(self, inputShape = None, batchSize = None, latentSize = None):
 
-class vgg_encoder(variational_autoencoder):
+        self.inputShape = inputShape
+        self.batchSize = batchSize
+        self.latentSize = latentSize
+        self.model = self.Build()
+
+class vgg_encoder(Architecture):
     def __init__(self, inputShape = (256, 256, 3), batchSize = None,
                  latentSize = 1000, latentConstraints = 'bvae', beta = 100., training = None):
         self.latentConstraints = latentConstraints
