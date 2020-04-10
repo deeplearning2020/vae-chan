@@ -42,7 +42,7 @@ def main():
     
     bvae.ae.compile(optimizer = 'adam', loss = 'mse')
     
-    es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 70) ## early stopping to prevent overfitting
+    es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 50) ## early stopping to prevent overfitting
 
     history = bvae.ae.fit(lr_image, hr_image,
                 epochs = 2000,
