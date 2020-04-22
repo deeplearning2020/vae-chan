@@ -1,13 +1,34 @@
-import tensorflow as tf
+import os
+import cv2
+import math
+import numpy as np
+from skimage.metrics import structural_similarity as ssim
+from matplotlib import pyplot as plt
 
 
-def psnr(x, y, m_val = 255):
-    return tf.image.psnr(a = x, b = y, max_val = m_val)
+def psnr(target, ref):
+    target_data = target.astype(float)
+    ref_data = ref.astype(float)
+    diff = ref_data - target_data
+    diff = diff.flatten('C')
+    rmse = math.sqrt(np.mean(diff ** 2.))
+    return 20 * math.log10(255. / rmse)
 
 
-def ssim(x, y, m_val = 255):
-    return tf.image.ssim(img1 = x, img2 = y, max_val = m_val)
+def mse(target, ref):
+    err = np.sum((target.astype('float') - ref.astype('float')) ** 2)
+    err /= float(target.shape[0] * target.shape[1])
+    return err
 
+def compare_images(target, ref):
+    scores = []
+    scores.append(psnr(target, ref))
+    scores.append(mse(target, ref))
+    scores.append(ssim(target, ref, multichannel =True))
+    return scores
 
-def mse(x, y):
-    return tf.metrics.mean_squared_error(labels = x, predictions = y)
+target = cv2.imread('re.png')
+ref = cv2.imread('HR.png')
+
+scores = compare_images(target, ref)
+print(scores)
