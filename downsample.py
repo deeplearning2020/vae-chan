@@ -18,4 +18,4 @@ def prepare_images(path, factor):
 new_path = os.path.join(os.getcwd(),'hr_image')
 write_path = os.path.join(os.getcwd(), 'lr_image/')
 print(write_path)
-prepare_images(new_path, 3)
+prepare_images(new_path, 2)
