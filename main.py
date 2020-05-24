@@ -23,7 +23,7 @@ def main():
     batchSize = 2
     latentSize = 1000
 
-    hr_image = load_img(os.path.join(os.getcwd(),'hr_image','HR.jpg')
+    hr_image = load_img(os.path.join(os.getcwd(),'hr_image','HR.png')
     ,target_size=inputShape[:-1]) ## loading the high-resolution image
     hr_image = np.array(hr_image, dtype = np.float32) * (2/255) - 1
     hr_image = np.array([hr_image]*batchSize) ## creating fake batches
