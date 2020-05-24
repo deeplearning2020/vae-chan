@@ -47,7 +47,6 @@ class vgg_encoder(Architecture):
         x = conv_block(512, kernelSize = 1)(x, training = self.training)
         x = conv_block(1024, kernelSize = 3)(x, training = self.training)
         x = conv_block(512, kernelSize = 1)(x, training = self.training)
-        x = GaussianNoise(0.1)(x)
         x = conv_block(1024, kernelSize = 3)(x, training = self.training)
         mean = Conv2D(filters = self.latentSize, kernel_size = (1, 1),
                       padding = 'same')(x)
