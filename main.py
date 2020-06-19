@@ -36,13 +36,13 @@ def main():
 
 
 
-    encoder = vgg_encoder(inputShape, latentSize = latentSize, latentConstraints='bvae', beta = 200)
+    encoder = vgg_encoder(inputShape, latentSize = latentSize, latentConstraints='bvae', beta = 500)
 
     decoder = vgg_decoder(inputShape, latentSize = latentSize)
 
     bvae = variational_autoencoder(encoder, decoder)
     
-    bvae.ae.compile(optimizer = 'adam', loss = 'mse')
+    bvae.ae.compile(optimizer = 'sgd', loss = 'mse')
     
     es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 500) ## early stopping to prevent overfitting
 
