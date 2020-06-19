@@ -28,11 +28,11 @@ def compare_images(target, ref):
     return scores
 
 
-target = cv2.imread('VAE.png')
-ref = cv2.imread('HR.png')
+target = cv2.imread('hr.png')
+ref = cv2.imread('re.png')
 scores = compare_images(target, ref)
 print("VAE : ", scores)
-
+"""
 
 target = cv2.imread('EDSR.png')
 ref = cv2.imread('HR.png')
@@ -63,4 +63,4 @@ ref = cv2.imread('HR.png')
 scores = compare_images(target, ref)
 print("SRFEAT : ", scores)
 
-
+"""

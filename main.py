@@ -21,7 +21,7 @@ def main():
 
     inputShape = (256, 256, 3)
     batchSize = 2
-    latentSize = 1000
+    latentSize = 2000
 
     hr_image = load_img(os.path.join(os.getcwd(),'hr_image','HR.png')
     ,target_size=inputShape[:-1]) ## loading the high-resolution image
@@ -47,7 +47,7 @@ def main():
     es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 500) ## early stopping to prevent overfitting
 
     history = bvae.ae.fit(lr_image, hr_image,
-                epochs = 1500,
+                epochs = 1900,
                 batch_size = batchSize, callbacks = [es])
 
     """ reconstrucing high-resolution image from the low-resolution image """
