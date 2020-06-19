@@ -28,8 +28,8 @@ def compare_images(target, ref):
     return scores
 
 
-target = cv2.imread('hr.png')
-ref = cv2.imread('re.png')
+target = cv2.imread('hr_baby.png')
+ref = cv2.imread('re2.png')
 scores = compare_images(target, ref)
 print("VAE : ", scores)
 """

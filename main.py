@@ -21,7 +21,7 @@ def main():
 
     inputShape = (256, 256, 3)
     batchSize = 2
-    latentSize = 2000
+    latentSize = 1200
 
     hr_image = load_img(os.path.join(os.getcwd(),'hr_image','HR.png')
     ,target_size=inputShape[:-1]) ## loading the high-resolution image
@@ -36,7 +36,7 @@ def main():
 
 
 
-    encoder = vgg_encoder(inputShape, latentSize = latentSize, latentConstraints='bvae', beta = 69)
+    encoder = vgg_encoder(inputShape, latentSize = latentSize, latentConstraints='bvae', beta = 200)
 
     decoder = vgg_decoder(inputShape, latentSize = latentSize)
 
@@ -47,7 +47,7 @@ def main():
     es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 500) ## early stopping to prevent overfitting
 
     history = bvae.ae.fit(lr_image, hr_image,
-                epochs = 1900,
+                epochs = 2000,
                 batch_size = batchSize, callbacks = [es])
 
     """ reconstrucing high-resolution image from the low-resolution image """
