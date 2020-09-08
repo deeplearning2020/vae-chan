@@ -42,7 +42,7 @@ def main():
 
     bvae = variational_autoencoder(encoder, decoder)
     
-    bvae.ae.compile(optimizer = 'sgd', loss = 'mse')
+    bvae.ae.compile(optimizer = 'adam', loss = 'mse')
     
     es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 500) ## early stopping to prevent overfitting
 
