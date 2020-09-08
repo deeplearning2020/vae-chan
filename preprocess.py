@@ -44,4 +44,4 @@ def down(path, factor):
 new_path = os.path.join(os.getcwd(),'hr_image')
 write_path = os.path.join(os.getcwd(), 'lr_image/')
 print(write_path)
-down(new_path, 2)
+down(new_path, 3)
