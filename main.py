@@ -47,7 +47,7 @@ def main():
     es = EarlyStopping(monitor = 'loss', mode = 'min', verbose = 1, patience = 5000) ## early stopping to prevent overfitting
 
     history = bvae.ae.fit(lr_image, hr_image,
-                epochs = 1500,
+                epochs = 1650,
                 batch_size = batchSize, callbacks = [es])
 
     """ reconstrucing high-resolution image from the low-resolution image """
